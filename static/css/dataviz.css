@@ -1,0 +1,243 @@
+.dataviz-container {
+    display: flex;
+    gap: 10px;
+
+    height: calc(95vh - 90px); 
+    min-height: 500px;    
+}	
+.col {
+    display: flex;
+    flex-direction: column;
+}
+.row {
+    display: flex;
+    flex-direction: row;
+}
+  
+/* SELECTORS*/
+/* FIGURES */
+#left-hand-side-selector { 
+    position: sticky;
+    top: 63px;
+
+    flex-grow: 0;
+    flex-shrink: 0;
+    flex-basis: 20%;    
+    
+    min-width: 340px;
+    
+	background-color: rgba(234, 236, 239, .7); /*#eaecef;*/
+	border: 1px solid #ccc;
+	border-radius: 6px;
+}
+
+#plotSelector{
+    width: 100%;
+    height: 120px;    
+    padding:10px 15px 0px 15px;
+
+    text-align:center;
+}
+#tabSelector{
+    width: 100%;
+}
+
+#allExceptPlotSelector{
+    /*95vh -90px: dataviz-container, 100+15*2: plot selector*/ 
+    height: calc(95vh - 290px); /*calc(95vh - 240px); */
+    
+    display:none; /*hidden at first*/
+    overflow-y: scroll;
+}
+
+/* plot buttons */
+.widget_add {
+    border-radius: 50%;
+    border: none;
+    padding: 0px;
+
+    height: 75px;
+    width: 75px; 
+    background-size: 75px;
+    margin: 0px 5px 5px 5px; 
+    
+}
+.widget_add:hover {
+    opacity: 0.25;
+}
+
+.widget_add > ion-icon{
+    height: 75px;
+    width: 75px; 
+    color: #000;        
+    opacity:0;
+}
+.widget_add:hover ion-icon{
+    opacity: 1;
+    
+    transition:0.8s ease; 
+}
+
+/* background images were taken from https://d3-graph-gallery.com */
+#TS{
+    background-image: url("/static/img/Line150.png")    
+}
+#maps{
+    background-image: url("/static/img/Map150.png");
+}
+
+/* datasets & customization buttons */
+.tab button {
+    float: left;
+    border-color: #D3D3D3;
+    border-style: solid;      
+    outline: none;
+    cursor: pointer;
+    padding: 12px 12px;
+    transition: 0.3s;
+    font-size:16px;
+}
+#b1 {
+    background-color: #fff;
+    border-width: 2px 1px 2px 0px;     
+}
+#b3{
+    background-color: inherit;
+    border-width: 2px 1px 2px 1px; 
+}
+#b2{
+    background-color: inherit;
+    border-width: 2px 0px 2px 1px; 
+}
+.tab button:hover {
+	background-color: #D3D3D3 !important;
+}
+
+.tabcontent {
+    display:flex;     
+    flex-direction: column;
+    
+    height:calc(100% - 70px);
+            
+	padding:15px;
+}
+
+#dataSearch {
+    width:100%; 
+    box-sizing: border-box; 
+    margin:0px 0px 12px 0px;
+    
+    font-family: Arial,Helvetica,sans-serif !important;
+    font-size: 0.95em;
+    color: #454545;
+
+	border: 1px solid #aaa;
+	border-radius: 3px;
+	padding: .4em 3px;
+}
+
+
+/*FIGURE SPECIFICATIONS */
+#tab2, #tab3 {
+    display:none;
+}
+
+/* temporal range selector */
+.temporal_range {
+	width: 48.5%;
+	height: 25px;
+
+    font-family: Arial,Helvetica,sans-serif !important;
+    font-size: 0.95em !important; 
+    color: #454545;
+
+	border: 1px solid #aaa;
+	border-radius: 3px;
+	padding-left:0px; padding-right:0px;
+}
+
+#startDate {
+    float: left;
+} 
+#endDate {
+    float: right;
+}
+
+/* titles */
+.specsTitles {
+    font-weight: var(--base-text-weight-semibold, 600);
+    font-size: 1.15em;
+    text-align: center;
+}
+.specsSubtitles {
+    font-weight: var(--base-text-weight-semibold, 600);
+    font-size: 1em;
+}
+
+
+/* select tags in JQuery UI */
+.ui-selectmenu-button {
+	width: calc(100% - 6px) !important;
+	font-size: 0.95em;
+	
+	border: 1px solid #aaa;
+	border-radius: 3px;
+	padding: .4em 3px;
+	background: #fff;	
+}
+.ui-selectmenu-open{
+        max-height: 180px;
+        overflow-y: scroll;
+}
+
+.ui-menu > li:nth-child(even) {
+	background-color: transparent !important;
+}
+.ui-menu > li:nth-child(odd) {
+	background-color: #f6f8fa !important;
+}
+.ui-menu-item-wrapper {
+	font-size: 0.9em;
+}
+
+.specs, .figs {
+    margin:6px 0px 6px 0px;  
+}
+
+/* VISUALIZATION */
+#right-hand-side-dataviz {
+    flex-grow: 0;
+    flex-shrink: 0;
+    flex-basis: 74%; 
+       
+    overflow-y: scroll;
+    
+}
+/* gridstack widgets */
+.grid-stack{
+    background-color: white
+}
+.grid-stack-item-content {
+    background-color: white;
+	border: 1px solid #ccc;
+	border-radius: 6px;
+	
+	margin : 0px 5px 10px 5px !important; 
+	inset: 0px !important; 
+}
+
+.widget_buttons{
+    border-radius: 50%;
+    border: none;
+
+    height: 20px;
+    width: 20px;     
+    margin: 0px 1px 4px 0px;
+    
+    padding: 0px;
+    filter: brightness(90%) saturate(200%);
+}
+.widget_buttons:hover{
+    background-color: #fff !important; 
+    filter: brightness(100%) saturate(0%); 
+}

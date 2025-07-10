@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<meta name="author" content="Patricia CADULE, Sebastián RIFFO" >
+	<meta name="description" content="ORCHIDEE">
+    
+    <title> ORCHIDEE Model Analysis </title>
+    
+    <link rel="stylesheet" href="static/css/navigation.css">
+    
+    <!-- source (2024/11/12) : https://github.com/sindresorhus/github-markdown-css/tree/main -->
+    <link rel="stylesheet" href="static/css/github-markdown.css">
+    <style>
+        .markdown-body { 
+            box-sizing: border-box;           
+            max-width:100%;padding: 32px;  
+            margin: 0 auto;
+            margin-top: 30px;
+        }
+    </style>    
+</head>
+
+<body>		
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+     
+	
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.1/moment.min.js"></script>
+	
+	<script src="https://cdn.datatables.net/2.1.8/js/dataTables.js"></script>
+	
+	<script src="https://cdn.datatables.net/2.1.8/js/dataTables.jqueryui.js"></script>
+	
+	<script src="https://cdn.datatables.net/searchpanes/2.3.3/js/dataTables.searchPanes.js"></script>
+	
+	<script src="https://cdn.datatables.net/searchpanes/2.3.3/js/searchPanes.jqueryui.js"></script>
+	
+	<script src="https://cdn.datatables.net/select/2.1.0/js/dataTables.select.js"></script>
+	
+	<script src="https://cdn.datatables.net/select/2.1.0/js/select.jqueryui.js"></script>
+	
+	<script src="https://cdn.datatables.net/plug-ins/1.13.7/filtering/type-based/accent-neutralise.js"></script>
+	
+
+
+    <link rel="stylesheet" type="text/css" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+    
+	
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/2.1.8/css/dataTables.jqueryui.css">
+	
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/searchpanes/2.3.3/css/searchPanes.jqueryui.css">
+	
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/select/2.1.0/css/select.jqueryui.css">
+	<!-- Load an icon library to show a hamburger menu (bars) on small screens -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<header class="Header" role="banner" 
+<nav>
+<ul class="nav-menu" id="myTopnav">				
+	<li class="icon" onclick="myFunction()"> <a> <i class="fa fa-bars"></i> </a>		
+	
+	<li class="resp"> <a href="index" style="color:#FDFEFE"> About </a> </li>	
+	
+		<li class="resp"> <a href="catalog.html" style="color:#FDFEFE">Catalog </a> </li>
+	
+		<li class="resp"> <a href="dataviz.html" style="color:#FDFEFE">Dataviz </a> </li>
+			
+
+	<li class="resp"> <a href="https://forge.ipsl.jussieu.fr/orchidee/wiki/Documentation/Validation" style="color:#FDFEFE" target="_blank"> Task Force (wiki) </a> </li> 
+	<li class="resp"> <a href="https://gitlab.in2p3.fr/orchidee-assessment-tool" style="color:#FDFEFE" target="_blank"> GitLab </a> </li> 
+</ul>	
+</nav>  
+
+<div class="MOMA_icon" id="MOMA_icon_long"> MOMA (Metrics for ORCHIDEE Model Analysis) </div>
+<div class="MOMA_icon" id="MOMA_icon_short"> MOMA </div>
+
+</header>
+<article class="markdown-body"> 	
+	    
+	
+		
+<div class="dtsp-verticalContainer">
+    <div class="dtsp-verticalPanes"></div>
+        
+	<div class="table-container">
+  		<table id="catalog">
+      		<thead>
+          		<tr>
+		      	<th></th>
+		      	<th>surface component</th>
+		      	<th>name</th>
+		      	<th>budget</th>
+		      	<th>variable</th>
+		      	<th>spatial resolution</th>
+		      	<th>spatial extent</th>
+		      	<th>temporal range (min)</th>
+		      	<th>temporal range (max)</th>
+		      	<th>temporal resolution</th>
+		      	</tr>
+		</thead>
+		</table>
+	</div>
+</div>
+
+<script src="static/js/MOMA/catalog_dataTables.js"></script>
+<link rel="stylesheet" href="static/css/catalog.css">
+
+
+	</article>
+</body>
+
+</html>

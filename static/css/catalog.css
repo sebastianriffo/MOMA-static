@@ -1,0 +1,84 @@
+/*  
+Catalog interactivity rests on dataTables.js, which introduces a certain layout. 
+To modify it, their elements appearance needs to be changed accordingly.
+*/
+
+.ui-widget-header {
+	font-weight: normal !important;
+	background: #eaecef !important;
+}
+
+/* CONTAINER */
+div.dtsp-verticalContainer{
+    display: flex;
+    justify-content: flex-start;
+    align-content: flex-start;
+    align-items: flex-start;   
+}
+
+/* LEFT HAND SIDE SELECTOR */
+div.dtsp-verticalPanes{
+    /* keep element after scrolling */
+    position: sticky; 
+    top: 63px; 
+
+    height: calc(75vh + 82px); /* calc(95vh - 94px); */
+    
+    flex-grow: 0;
+    flex-shrink: 0;
+    flex-basis: 25%;
+
+    padding-top: inherit;
+	padding-top: 10px;
+    margin-right: 20px;
+}
+
+div.dtsp-panesContainer {
+	border: 1px solid #ccc;
+	border-radius: 6px;
+	padding: 1em !important;
+	overflow-y: auto !important;
+	height: inherit !important;
+}
+
+/* title : Filters Active, Clear All, Show All, Collapse All */
+div.dtsp-titleRow {
+    margin-top: 0 !important;
+    padding-top: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+ 
+div.dtsp-title {
+    margin-right: 0px !important;
+}
+ 
+/* searchboxes : options display */
+div.dtsp-topRow {
+	background: #fff !important;
+}
+div.dt-scroll-body {
+	height: auto !important;
+}
+div.dt-container {
+	border: none !important;
+}
+input.dtsp-search {
+    min-width: 0px !important;
+    margin: 0px !important;
+}
+.dataTable{
+	display: table !important;
+}
+
+/* TABLE CONTAINER */
+
+.table-container {
+    width: 75%;
+}
+
+/* align searchbar */
+#catalog_wrapper > div.dt-layout-row div.dt-layout-cell div.dt-search{
+	margin-left: -3px;
+}

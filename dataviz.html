@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<meta name="author" content="Patricia CADULE, Sebastián RIFFO" >
+	<meta name="description" content="ORCHIDEE">
+    
+    <title> ORCHIDEE Model Analysis </title>
+    
+    <link rel="stylesheet" href="static/css/navigation.css">
+    
+    <!-- source (2024/11/12) : https://github.com/sindresorhus/github-markdown-css/tree/main -->
+    <link rel="stylesheet" href="static/css/github-markdown.css">
+    <style>
+        .markdown-body { 
+            box-sizing: border-box;           
+            max-width:100%;padding: 32px;  
+            margin: 0 auto;
+            margin-top: 30px;
+        }
+    </style>    
+</head>
+
+<body>		
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+     
+	
+	<script src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+	
+
+
+    <link rel="stylesheet" type="text/css" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+    
+	
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/select/2.1.0/css/select.jqueryui.css">
+	
+	<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/gridstack@11.1.1/dist/gridstack.min.css">
+	<!-- Load an icon library to show a hamburger menu (bars) on small screens -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<header class="Header" role="banner" 
+<nav>
+<ul class="nav-menu" id="myTopnav">				
+	<li class="icon" onclick="myFunction()"> <a> <i class="fa fa-bars"></i> </a>		
+	
+	<li class="resp"> <a href="index" style="color:#FDFEFE"> About </a> </li>	
+	
+		<li class="resp"> <a href="catalog.html" style="color:#FDFEFE">Catalog </a> </li>
+	
+		<li class="resp"> <a href="dataviz.html" style="color:#FDFEFE">Dataviz </a> </li>
+			
+
+	<li class="resp"> <a href="https://forge.ipsl.jussieu.fr/orchidee/wiki/Documentation/Validation" style="color:#FDFEFE" target="_blank"> Task Force (wiki) </a> </li> 
+	<li class="resp"> <a href="https://gitlab.in2p3.fr/orchidee-assessment-tool" style="color:#FDFEFE" target="_blank"> GitLab </a> </li> 
+</ul>	
+</nav>  
+
+<div class="MOMA_icon" id="MOMA_icon_long"> MOMA (Metrics for ORCHIDEE Model Analysis) </div>
+<div class="MOMA_icon" id="MOMA_icon_short"> MOMA </div>
+
+</header>
+<article class="markdown-body"> 	
+	    
+	
+		
+<div class="dataviz-container">
+    <div class="col" id="left-hand-side-selector">
+        <div class="row"> 
+            <div id="plotSelector">
+                <legend class="specsTitles"> Choose a plot </legend>
+                <div class="D3button" id="plot">
+                   	<button class="widget_add" id="TS"> <ion-icon name="add"></ion-icon> </button>
+                   	<button class="widget_add" id="maps"> <ion-icon name="add"></ion-icon> </button>
+                </div>
+            </div>
+        </div>
+                    	
+        <div class="row tab" id="tabSelector">
+ 			<button class="tablinks" id="b1" style="width:30%"> Datasets </button>
+ 			<button class="tablinks" id="b2" style="width:40%"> Customization </button>
+ 			<button class="tablinks" id="b3" style="width:30%"> Export </button>
+    	</div>
+    		
+        <div class="row" id="allExceptPlotSelector">
+        <div class="col">        
+    		<div class="tabcontent" id="tab1"> 
+    			<legend class="specsTitles"> Filters </legend>
+    			    								
+    			<div class="specs">
+    			<select id="experience" class="specSelector" title="Experience"> 
+    				<option value="select" selected disabled> select </option>
+    				<option value="historical" selected="selected"> Historical </option>
+    				<option value="transient"> Transient </option>
+    				<option value="spinup"> Spinup </option>	
+    			</select>
+    			</div>
+    
+    			<div class="specs">
+    			<select id="variableName" class="specSelector" title="Variable"> 
+    				<option value="select" selected disabled> select </option>
+    			</select>
+    			</div>		
+
+    			<div id="divTimeResolution" class="specs">
+    			<select id="timeResolution" class="specSelector" title="Time resolution"> 
+    				<option value="select" selected disabled> select </option>
+    				<option value="yearly" selected="selected">Yearly</option>
+    				<option value="monthly">Monthly</option>
+    				<option value="daily">Daily</option>
+    				<option value="seasonal">Seasonal</option> <!-- (DJF MAM JJA SON) -->
+    			</select>			
+    			</div>	
+                
+                <!--
+             	<legend> Spatial Extent </legend>
+    			-->
+    			<div class="specs">
+    			<select id="worldMap" class="specSelector" title="Spatial extent"> 
+    				<option value="select" selected disabled>select</option>
+    			</select>			
+    			</div>
+    			    				     			
+     			<div style="max-height:100px; overflow-y:scroll; margin:0px 0px 12px 0px;">
+     			<form role="form" id="spatialExtent" class="specSelectorRegion" style="margin-left:10px">
+     			</form>
+     			</div>    			
+    
+                <hr style="background-color:inherit; margin:0px 0px 12px 0px; height: 1px;">
+    
+                <legend class="specsTitles"> Available data </legend>
+        		<div class="specs">         		
+     			<input type="text" placeholder="Search... " id="dataSearch"/> 
+             	
+                 	<legend class="specsSubtitles"> Simulations </legend>	     			
+         			<div style="overflow-y:scroll; margin:0px 0px 12px 0px;">
+         			<form role="form" class="datasetList" id="simulations">
+         			</form>
+         			</div>			
+    
+         			<legend class="specsSubtitles"> Observations </legend>	     
+         			<div style="overflow-y:scroll;">		
+         			<form role="form" class="datasetList" id="observations">
+         			</form>
+         			</div>	
+            	</div>	
+    		</div>
+    		
+            <div class="tabcontent" id="tab2">                
+    			<div id="divGeoProjection" class="specs">
+    			<legend>Projection </legend>
+    			<select id="projection" class="specSelector custom"> 
+    				<option value="select" selected disabled> select </option>	
+    				<option value="geoCylindricalStereographic"> Cylindrical stereographic </option>
+    				<option value="geoEquirectangular"> Equirectangular </option>
+    				<option value="geoMercator"> Mercator </option>
+    				<option value="geoNaturalEarth1"> Natural Earth I </option>
+    				<option value="geoOrthographic" selected="selected"> Orthographic </option>
+    			</select>
+    			</div>	
+    
+    			<div id="divGeoColor" class="specs">
+    			<legend>Color schemes</legend>
+    			<select id="color" class="specSelector custom"> 
+        			<optgroup label="Sequential (single-hue)">
+        				<option value="interpolateBlues"> blue </option>
+        				<option value="interpolateGreens" selected="selected"> green </option>        				 
+        				<!-- <option value="interpolateGreys"> grey </option> -->
+        				<option value="interpolatePurples"> purple </option>
+        				<option value="interpolateReds"> red </option>
+        				<option value="interpolateOranges"> orange </option>
+        			</optgroup>
+    				
+    				<optgroup label="Sequential (multi-hue)">
+        				<option value="interpolateTurbo"> turbo </option>
+        				<option value="interpolateViridis"> viridis </option>
+        				<option value="interpolateInferno"> inferno </option>
+        				<option value="interpolateMagma"> magma </option>
+        				<option value="interpolatePlasma"> plasma </option>
+        				<!-- <option value="interpolateCividis"> cividis </option> -->
+        				<option value="interpolateWarm"> warm </option>
+        				<option value="interpolateCool"> cool </option>
+        				<option value="interpolateCubehelixDefault"> cubehelix </option>
+        				<option value="interpolateBuGn"> blue-green </option>
+        				<option value="interpolateBuPu"> blue-purple </option>				
+        				<option value="interpolateGnBu"> green-blue </option>
+        				<option value="interpolateOrRd"> orange-red </option>
+        				<option value="interpolatePuBuGn"> purple-blue-green </option>
+        				<option value="interpolatePuBu"> purple-blue </option>
+        				<option value="interpolatePuRd"> purple-red </option>
+        				<option value="interpolateRdPu"> red-purple </option>
+        				<option value="interpolateYlGnBu"> yellow-green-blue </option>
+        				<option value="interpolateYlGn"> yellow-green </option>
+        				<option value="interpolateYlOrBr"> yellow-orange-brown </option>
+        				<option value="interpolateYlOrRd"> yellow-orange-red </option>
+        			</optgroup>
+        			
+        			<optgroup label="Diverging">
+            			<option value="interpolateBrBG"> brown-blue-green </option>
+                        <option value="interpolatePRGn"> purple-green </option>
+                        <option value="interpolatePiYG"> pink-yellow-green </option>
+                        <option value="interpolatePuOr"> purple-orange </option>
+                        <option value="interpolateRdBu"> red-blue </option>
+                        <!-- <option value="interpolateRdGy"> red-grey </option> -->
+                        <option value="interpolateRdYlBu"> red-yellow-blue </option>
+                        <option value="interpolateRdYlGn"> red-yellow-green </option>
+                        <option value="interpolateSpectral"> spectral </option>
+        			</optgroup>
+                </select>
+    			</div>	
+    
+                <!--
+    			<div id="divGeoColorbarPosition" class="specs">
+    			<legend>Colorbar position</legend>
+    			<select id="colorbarPosition" class="specSelector custom"> 
+    				<option value="select" selected disabled> Select </option>					
+    				<option value="right" selected="selected"> right </option>
+    				<option value="bottom"> bottom </option>
+    			</select>
+    			</div>	
+                -->
+    
+    			<div id="divTemporalRange" class="specs">
+    			<legend> Temporal range </legend>
+    			<input type="date" class="specSelector temporal_range custom" id="startDate"/>  
+    			<input type="date" class="specSelector temporal_range custom" id="endDate"/> 
+    			</div>
+        	</div>	
+
+            <div class="tabcontent" id="tab3">
+    			<div id="divFormat" class="figs">
+    			<legend> Format </legend>
+    			<select id="format" class="exportSelector custom"> 
+    				<option value="svg"> SVG </option>
+    				<option value="png" selected="selected"> PNG </option>
+    			</select>
+    			</div>
+    			
+    			<div id="divBackground" class="figs">
+    			<legend> Background </legend>
+    			<select id="background" class="exportSelector custom"> 
+    				<option value="white" selected="selected"> white </option>
+    				<option value="transparent"> transparent </option>
+    			</select>
+    			</div>    				
+            </div>    
+                
+    	</div>
+    	</div>    
+    </div>
+    	
+	<div class="col" id="right-hand-side-dataviz">
+        <div class="grid-stack"></div>
+	</div>
+	</div>	
+</div>
+
+<script src="static/js/MOMA/datavizLayout.js" type="module"></script> 
+
+<link rel="stylesheet" href="static/css/dataviz.css">
+
+	</article>
+</body>
+
+</html>
