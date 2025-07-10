@@ -267,7 +267,7 @@ async function world_decomposition(context, currentProjection, worldMap){
 
     // ocean
     // temporary fix (https://observablehq.com/@fil/ocean) we must create our json ocean files
-    const world = await d3.json(`${window.origin}/static/world-atlas/countries-110m.json`);    
+    const world = await d3.json(`static/world-atlas/countries-110m.json`);    
 
     let objects_ocean = ({
       type: "GeometryCollection",

@@ -40,7 +40,7 @@ export async function setRegionList(worldMap, checked){
     checked = ((typeof checked === 'undefined') || (checked.length === 0)) ? ['global'] : checked;
 
     // dictionary of regions
-	const land = await fetch(`${window.origin}/static/world-atlas/${worldMap}.json`, {method : 'GET'})
+	const land = await fetch(`static/world-atlas/${worldMap}.json`, {method : 'GET'})
      							.then((response) => {
      								if (response.ok) {
      									return response.json();

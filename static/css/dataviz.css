@@ -80,10 +80,10 @@
 
 /* background images were taken from https://d3-graph-gallery.com */
 #TS{
-    background-image: url("/static/img/Line150.png")    
+    background-image: url("../img/Line150.png")    
 }
 #maps{
-    background-image: url("/static/img/Map150.png");
+    background-image: url("../img/Map150.png");
 }
 
 /* datasets & customization buttons */
