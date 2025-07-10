@@ -177,8 +177,6 @@ $('#spatialExtent').on('change', 'input', async function(event) {
 // PLOT SELECTORS (jqueryUI compatible)
 $('.specSelector').on('selectmenuchange change', async function(event) {
 
-    console.log(event)
-    
     const idx = config.findIndex( d => d.svg === svg_id )
     const plot = (config.length > 0) ? config[idx].plot : 'none';
     	

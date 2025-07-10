@@ -297,7 +297,7 @@ async function world_decomposition(context, currentProjection, worldMap){
     if (worldMap === 'countries-110m') {
         land = topojson.feature(world, world.objects.countries)
     } else {
-        land = await d3.json(`${window.origin}/static/world-atlas/${worldMap}.json`);
+        land = await d3.json(`static/world-atlas/${worldMap}.json`);
     }
 
     let tooltip = d3.select("body")
